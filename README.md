@@ -1,6 +1,8 @@
 # WarrenFit Plate Loader
 
-A command-line plate loading calculator for CSC505 – Module 1 Critical Thinking. Given a target barbell weight, it works out which standard weight plates (45, 35, 25, 10, 5, and 2.5 lb) to load on each side of the bar. If the target cannot be loaded exactly, it returns the closest loadable weight below the target instead of rejecting the input.
+Repository: https://github.com/cwarrendev/csc505-critical-thinking-1
+
+A command-line plate loading calculator for CSC505 – Module 1 Critical Thinking, built for loading my Smith machine barbell. When you know the total weight you want to lift, it works out which standard weight plates (45, 35, 25, 10, 5, and 2.5 lb) to load on each side of the bar to get there — no mental math between sets. Because a Smith machine bar usually weighs less than a standard 45 lb Olympic bar, the bar weight is an input: enter your machine's effective bar weight, or press Enter to use the 45 lb default. If the target cannot be loaded exactly, it returns the closest loadable weight below the target instead of rejecting the input.
 
 ## Requirements
 

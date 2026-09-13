@@ -6,9 +6,11 @@
 
 **Script:** `plate_calculator.py`
 
+**Repository:** https://github.com/cwarrendev/csc505-critical-thinking-1
+
 ## What was the purpose or intended use case of your script?
 
-The script calculates which weight plates to load on each side of a barbell to reach a target total weight, a feature I plan to carry into the WarrenFit fitness app. When a target cannot be loaded exactly with standard plates, it returns the closest loadable weight below the target and tells the user so, rather than rejecting the input.
+The script calculates which weight plates to load on each side of a barbell to reach a target total weight, a feature I plan to carry into the WarrenFit fitness app. The immediate use case is my own Smith machine, where the bar weighs less than a standard 45 lb Olympic bar, which is why the bar weight is a user input rather than a constant. When a target cannot be loaded exactly with standard plates, it returns the closest loadable weight below the target and tells the user so, rather than rejecting the input.
 
 ## What tools or libraries did you use, and why?
 
