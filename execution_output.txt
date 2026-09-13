@@ -1,0 +1,10 @@
+Command: python plate_calculator.py
+Supplied standard input:
+185
+(blank - default 45 lb bar)
+
+WarrenFit Plate Loader
+Target weight (lb): Bar weight (lb, blank for 45): Per side:
+  1 x 45 lb
+  1 x 25 lb
+Bar loads to 185 lb.
