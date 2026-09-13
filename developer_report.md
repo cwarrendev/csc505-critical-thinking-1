@@ -1,42 +1,37 @@
-# Plate Loading Calculator Developer Report
+# Developer Report: Plate Loading Calculator
 
-Module 1 Critical Thinking
+**Course:** CSC505 – Module 1 Critical Thinking
+**Author:** Chris Warren
+**Script:** `plate_calculator.py`
 
-REFERENCE DRAFT — describes the reference implementation. Rewrite each answer
-from your own rebuild experience before any submission.
+## What was the purpose or intended use case of your script?
 
-## Purpose and intended use
+The script calculates which weight plates to load on each side of a barbell to reach a target total weight, a feature I plan to carry into the WarrenFit fitness app. When a target cannot be loaded exactly with standard plates, it returns the closest loadable weight below the target and tells the user so, rather than rejecting the input.
 
-The prototype computes which plates to load on each side of a barbell to
-reach a target weight, a core feature planned for the WarrenFit fitness app.
-When a target cannot be loaded exactly, it reports the closest loadable
-weight below it rather than rejecting the input.
+## What tools or libraries did you use, and why?
 
-## Tools and libraries
+I wrote the script in Python 3 using only the standard library (Python Software Foundation, 2025a), since the problem is arithmetic and input handling and adding dependencies would not have earned their cost. Plate weights are exact binary fractions (45, 35, 25, 10, 5, 2.5), so plain floats are safe here and avoided the overhead of `decimal` (Python Software Foundation, 2025b). I used VS Code with the debugpy launch configuration to step through the loading loop (Microsoft, n.d.), and Git for version control (Chacon & Straub, 2014).
 
-The script uses Python 3 and only the standard library; plate weights are
-exact binary fractions, so plain floats are sufficient. The loading math is
-separated from the command-line interface so it can be tested independently
-and reused behind the app's API later.
+## What challenges did you encounter during development?
 
-## Development challenges
+The main challenge was realizing that the greedy heaviest-first approach, while always producing a valid loadout, does not always minimize plate count; for example, a 165 lb target yields 45 + 10 + 5 per side when 35 + 25 would do. Handling unloadable targets (such as 137.7 lb) also forced a design decision between raising an error and degrading gracefully, and I chose the latter because a lifter still needs a usable answer. Keeping the `ValueError` handling in one place covered both bad numeric input and out-of-range weights without duplicating checks.
 
-The main challenge was discovering that the greedy heaviest-first strategy,
-while always producing a valid loadout, does not always minimize plate count
-(a 165 lb target yields three plates per side when two suffice). Deciding how
-to handle unloadable targets, such as 137.7 lb, also required a design choice
-between erroring and degrading gracefully.
+## How would you expand or improve this prototype in future iterations?
 
-## Future improvements
+The next iteration should account for a limited plate inventory (how many pairs of each size are actually available), which matches the equipment model in the full application, and add a kilogram mode. Replacing the greedy selection with a dynamic-programming pass would guarantee the fewest plates, since greedy choice is only optimal for denomination sets with a specific structure (Cormen et al., 2022). Separating `plan_plates()` from the CLI already positions the logic to sit behind an API endpoint with unit tests.
 
-The next iteration should respect a limited plate inventory (pairs owned per
-size), matching the equipment model in the full application, and add a
-kilogram mode. A dynamic-programming pass could replace greedy selection to
-guarantee the fewest plates.
+## What lessons did you learn that apply to broader software development work?
 
-## Lessons for broader development
+An algorithm that produces correct output is not necessarily optimal, and it is worth testing edge cases beyond the happy path before calling something done. Choosing the simplest data type the problem allows (floats here, but never for currency) keeps code readable without sacrificing correctness. Finally, documenting a prototype's known limitations is part of an honest handoff, not a weakness in it.
 
-Choosing the simplest data type the problem allows matters: this task is safe
-with floats, while currency math is not. An algorithm that works is not
-necessarily optimal, and stating a prototype's known limitations is part of
-an honest handoff.
+## References
+
+Chacon, S., & Straub, B. (2014). *Pro Git* (2nd ed.). Apress. https://git-scm.com/book/en/v2
+
+Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). *Introduction to algorithms* (4th ed.). MIT Press.
+
+Microsoft. (n.d.). *Python debugging in VS Code*. Visual Studio Code Docs. Retrieved September 13, 2026, from https://code.visualstudio.com/docs/python/debugging
+
+Python Software Foundation. (2025a). *The Python standard library* (Python 3 documentation). https://docs.python.org/3/library/
+
+Python Software Foundation. (2025b). *Floating-point arithmetic: Issues and limitations* (Python 3 documentation). https://docs.python.org/3/tutorial/floatingpoint.html
