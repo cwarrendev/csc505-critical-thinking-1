@@ -1,6 +1,6 @@
 # Developer Report: Plate Loading Calculator
 
-**Course:** CSC505 – Module 1 Critical Thinking
+**Course:** CSC505 - Module 1 Critical Thinking
 
 **Author:** Chris Warren
 
