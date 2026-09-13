@@ -1,7 +1,9 @@
 # Developer Report: Plate Loading Calculator
 
 **Course:** CSC505 – Module 1 Critical Thinking
+
 **Author:** Chris Warren
+
 **Script:** `plate_calculator.py`
 
 ## What was the purpose or intended use case of your script?
@@ -23,6 +25,12 @@ The next iteration should account for a limited plate inventory (how many pairs 
 ## What lessons did you learn that apply to broader software development work?
 
 An algorithm that produces correct output is not necessarily optimal, and it is worth testing edge cases beyond the happy path before calling something done. Choosing the simplest data type the problem allows (floats here, but never for currency) keeps code readable without sacrificing correctness. Finally, documenting a prototype's known limitations is part of an honest handoff, not a weakness in it.
+
+## Sample Execution
+
+The screenshot below shows the script running in the VS Code integrated terminal with the project's virtual environment active. For a 185 lb target with the default 45 lb bar, the calculator plans one 45 lb and one 25 lb plate per side and confirms the bar loads to exactly 185 lb.
+
+![plate_calculator.py running in the VS Code terminal: a 185 lb target produces 1 x 45 lb and 1 x 25 lb per side, loading the bar to 185 lb](screenshots/output1.png)
 
 ## References
 
